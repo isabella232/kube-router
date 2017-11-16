@@ -501,7 +501,8 @@ func connectToPeers(server *gobgp.BgpServer, peerConfigs []*config.NeighborConfi
 			Config: *peerConfig,
 			GracefulRestart: config.GracefulRestart{
 				Config: config.GracefulRestartConfig{
-					Enabled: true,
+					Enabled:          true,
+					LongLivedEnabled: true,
 				},
 				State: config.GracefulRestartState{
 					LocalRestarting: true,
@@ -966,7 +967,8 @@ func (nrc *NetworkRoutingController) syncInternalPeers() {
 		if nrc.bgpGracefulRestart {
 			n.GracefulRestart = config.GracefulRestart{
 				Config: config.GracefulRestartConfig{
-					Enabled: true,
+					Enabled:          true,
+					LongLivedEnabled: true,
 				},
 				State: config.GracefulRestartState{
 					LocalRestarting: true,
